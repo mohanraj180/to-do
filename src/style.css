@@ -10,7 +10,24 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: 'Roboto', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.8fr 0.1fr;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    grid-template-rows: 1fr;
+
+}
+
+.projects {
+    cursor: pointer;
+}
+
+.projects-item {
+    cursor: pointer;
+    display: block;
+    margin-left: 1rem;
 }
