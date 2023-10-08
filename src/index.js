@@ -1,3 +1,4 @@
+import { displayCreateNewProject, createProject} from './project';
 import { createAddTaskForm, toggleAddTaskContainerVisibility } from './todos';
 
 import './style.css';
@@ -17,23 +18,21 @@ addIcon.classList.add('header-icons');
 header.appendChild(addIcon);
 
 
-const projects = document.querySelector('.projects');
-const project_item = document.querySelector('.projects-item');
-projects.addEventListener('click', () => {
+const createProjectBtn = document.querySelector('#new-project');
+createProjectBtn.addEventListener('click', () => {
+    displayCreateNewProject();
 
-    const projectItemDisplay = window.getComputedStyle(project_item).getPropertyValue('display');
+    const overlay = document.querySelector('.overlay');
+    const createBtn = document.querySelector('.create');
+    createBtn.addEventListener('click', () => {
+        createProject();
+        overlay.remove();
+    });
 
-    switch (projectItemDisplay) {
-        case 'none':
-            project_item.style.display = 'block';
-            break;
-        case 'block':
-            project_item.style.display = 'none';
-            break;
-
-        default:
-            break;
-    }
+    const cancelBtn = document.querySelector('.cancel');
+    cancelBtn.addEventListener('click', () => {
+        overlay.remove();
+    })
 });
 
 const addIconBtn = document.querySelector('#add-icon');
@@ -42,18 +41,16 @@ addIconBtn.addEventListener('click', () => {
 
     createAddTaskForm();
     
-    const addTaskContainer = document.querySelector('.new-task-container');
+    const overlay = document.querySelector('.overlay');
 
     const addBtn = document.querySelector('#add');
     addBtn.addEventListener('click', () => {
-        toggleAddTaskContainerVisibility();
-        addTaskContainer.remove();
+        overlay.remove();
     });
 
     const cancelBtn = document.querySelector('#cancel');
     cancelBtn.addEventListener('click', () => {
-        toggleAddTaskContainerVisibility();
-        addTaskContainer.remove();
+        overlay.remove();
     });
     
 });

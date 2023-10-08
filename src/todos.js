@@ -27,26 +27,11 @@ export function createAddTaskForm() {
     addTaskContainer.appendChild(cancelBtn);
 
 
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    overlay.appendChild(addTaskContainer);
 
-    content.appendChild(addTaskContainer);
+    content.appendChild(overlay);
 }
 
-export function toggleAddTaskContainerVisibility() {
-    const addTaskContainer = document.querySelector('.new-task-container');
-    const computedStyle = window.getComputedStyle(addTaskContainer);
-    const displayPropertyValue = computedStyle.getPropertyValue('display');
 
-    switch (displayPropertyValue) {
-        case 'block':
-            addTaskContainer.style.display = 'none';
-            break;
-
-        case 'none':
-            addTaskContainer.style.display = 'block';
-            break;
-    
-        default:
-            break;
-    }
-    
-}
